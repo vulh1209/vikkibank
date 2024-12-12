@@ -1,0 +1,236 @@
+@font-face {
+  font-family: "FF Good Pro";
+  src: local("FF Good Pro Medium"), local("FF-Good-Pro-Medium"),
+    url("./FFGoodPro-Medium/FFGoodPro-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+:not(:defined) > * {
+  display: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+
+.progress-bar {
+  display: block;
+  width: 33%;
+  height: 10%;
+  max-height: 2%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  border-radius: 25px;
+  box-shadow: 0px 3px 10px 3px rgba(0, 0, 0, 0.5), 0px 0px 5px 1px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.progress-bar.hide {
+  visibility: hidden;
+  transition: visibility 0.3s;
+}
+
+.update-bar {
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 0%;
+  height: 100%;
+  border-radius: 25px;
+  float: left;
+  transition: width 0.3s;
+}
+
+@font-face {
+  font-family: "avenger";
+  src: url("./public/avenger.otf");
+}
+
+#ar-button {
+  background-color: #ff00d4;
+  color: white;
+  font-family: avenger;
+  top:86%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-weight: 600;
+  font-size: large;
+  padding: 10px 24px 10px 20px;
+  height: 36px;
+  margin-bottom: 10px;
+  max-width: 100px;
+  border-radius: 18px;
+}
+
+
+
+/* #ar-button:active {
+  background-color: #E8EAED;
+}
+
+#ar-button:focus {
+  outline: none;
+}
+
+#ar-button:focus-visible {
+  outline: 1px solid #4285f4;
+} */
+
+@keyframes circle {
+  from { transform: translateX(-50%) rotate(0deg) translateX(50px) rotate(0deg); }
+  to   { transform: translateX(-50%) rotate(360deg) translateX(50px) rotate(-360deg); }
+}
+
+@keyframes elongate {
+  from { transform: translateX(100px); }
+  to   { transform: translateX(-100px); }
+}
+
+model-viewer > #ar-prompt {
+  position: absolute;
+  left: 50%;
+  bottom: 60px;
+  animation: elongate 2s infinite ease-in-out alternate;
+  display: none;
+}
+
+model-viewer[ar-status="session-started"] > #ar-prompt {
+  display: block;
+}
+
+model-viewer > #ar-prompt > img {
+  animation: circle 4s linear infinite;
+}
+
+.navbar{
+  position: fixed;
+  z-index: 2;
+  padding: 16px 20px;
+  background: transparent;
+  top: 0;
+  left: 0;
+  right:0;
+}
+
+
+.logo-img{
+  height: 50px;
+}
+
+.skip-button {
+  position: absolute;
+  top: 86vh;
+  right: 20px;
+  height: 30px;
+}
+
+.play-button{
+  position: absolute;
+  top: 40vh;
+  left: 36vw;
+  height: 16vh;
+}
+
+.logo{
+  z-index: 100;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items:center;
+  align-content:center;
+  background: transparent;
+}
+
+.logo-left{
+  margin-top: 8px;
+  height: 36px;
+}
+
+.logo-right{
+  height: 32px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+}
+
+.video {
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.video video{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.overplay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.action {
+  z-index: 1;
+  flex:1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ .button {
+  margin: 20px ;
+  background-color: transparent;
+  border: 2px solid #F75934;
+  font-family: "FF Good Pro";
+  font-weight: 600;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 24px;
+  letter-spacing: 1px;
+  min-width: 200px;
+  cursor: pointer;
+ }
+
+ .model-viewer{
+  width:100%;
+  flex:1;
+  position: relative;
+  --progress-bar-color: transparent;
+ }
+
+ @media screen and (max-width: 480px) {
+  .button {
+    font-size: 18px;
+    margin: 10px 0;
+    padding: 10px 15px;
+    width: 100%;
+  }
+  .action{
+    width: 100%;
+    flex-direction: column;
+  }
+  
+ }
+
+ .button:hover {
+  background-color: #F75934;
+
+ }
+
